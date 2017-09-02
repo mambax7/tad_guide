@@ -21,7 +21,7 @@ function list_all_modules()
 
     $all_data = list_modules("return");
     //die(var_export($all_data));
-    $sql    = "select `act_kind`, `kind_title`, `act_name`, `act_date`, `cate_sn` from `" . $xoopsDB->prefix("tad_guide") . "` order by `kind_title`";
+    $sql = "SELECT `act_kind`, `kind_title`, `act_name`, `act_date`, `cate_sn` FROM `" . $xoopsDB->prefix("tad_guide") . "` ORDER BY `kind_title`";
     $result = $xoopsDB->queryF($sql) or die($sql);
     $i      = 0;
     while (list($act_kind, $dirname, $act_name, $act_date, $cate_sn) = $xoopsDB->fetchRow($result)) {
@@ -258,7 +258,7 @@ function group_cate($dirname, $mid = 0)
 {
     global $xoopsDB, $xoopsTpl, $mod_arr;
 
-    $sql    = "select `groupid`, `name` from " . $xoopsDB->prefix("groups") . " order by groupid";
+    $sql = "SELECT `groupid`, `name` FROM " . $xoopsDB->prefix("groups") . " ORDER BY groupid";
     $result = $xoopsDB->query($sql) or web_error($sql);
 
     while (list($groupid, $name) = $xoopsDB->fetchRow($result)) {
@@ -294,7 +294,7 @@ function get_group()
 {
     global $xoopsDB, $xoopsTpl, $mod_arr;
 
-    $sql    = "select `groupid`, `name` from " . $xoopsDB->prefix("groups") . " order by groupid";
+    $sql = "SELECT `groupid`, `name` FROM " . $xoopsDB->prefix("groups") . " ORDER BY groupid";
     $result = $xoopsDB->query($sql) or web_error($sql);
     $group  = "";
     $i      = 0;
@@ -783,7 +783,7 @@ function content_get_backup($tbl = "")
 {
     global $xoopsDB;
 
-    $sql    = "select count(*) from " . $xoopsDB->prefix("{$tbl}_gbak");
+    $sql    = "SELECT count(*) FROM " . $xoopsDB->prefix("{$tbl}_gbak");
     $result = $xoopsDB->queryF($sql);
     if (!empty($result)) {
         return true;
@@ -829,7 +829,7 @@ function content_backup($dirname = "", $bak_table = array())
 
             $sql = "
       INSERT INTO `" . $xoopsDB->prefix("{$bak['name']}_gbak") . "`
-      SELECT * from `" . $xoopsDB->prefix($bak['name']) . "`;
+      SELECT * FROM `" . $xoopsDB->prefix($bak['name']) . "`;
       ";
             $xoopsDB->queryF($sql) or web_error($sql);
         }

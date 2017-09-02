@@ -52,4 +52,3 @@ function full_copy( $source="", $target=""){
   }
 }
 */
-?>
